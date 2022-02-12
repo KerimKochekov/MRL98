@@ -36,10 +36,23 @@ Each buffer X is assigned a height l(X) and l is set to min_i l(X_i). h(X) is se
 - **NEW**: Put the first bk elements into buffers successively and set their weights to 1.
 - **COLLAPSE**: Compress elements from multiple buffers into one buffer. Specifically, each element from an input buffer Xi would be duplicated w(Xi) times. Then these duplicated elements are sorted and merged into a sequence, where k elements are selected at regular intervals and stored in the output buffer Y, whose weight w(Y) = sum(w(Xi))
 - **OUTPUT**: Select an element as the quantile answer from b buffers.
+![](https://github.com/KerimKochekov/MRL98/blob/main/images/MLR98.png)
 
 # Results
-
 ## Time consumption
+As we see from the graphs below, for constant N=10^5(data size), the variyng values of parameters of φ, b, and k do not matter much(time difference is less than 1 sec for big values for them, so it can be discarded).
 
+![](https://github.com/KerimKochekov/MRL98/blob/main/images/quantile-time.png)
+![](https://github.com/KerimKochekov/MRL98/blob/main/images/b-time.png)
+![](https://github.com/KerimKochekov/MRL98/blob/main/images/k-time.png)
+
+As conclusion, we can say that only N(data size) affects the execution time of algorithm, as we see below. Logically, it increase by N increases(more data, more time to process it and find quantile).
+
+![](https://github.com/KerimKochekov/MRL98/blob/main/images/N-time.png)
+ 
 ## Memory consumption
+Unlike time consumption, b parameter(number of buffers) definetely affects the memory consumption as you can see from the graph below.
+![](https://github.com/KerimKochekov/MRL98/blob/main/images/b-memory.png)
 
+# Github link
+[https://github.com/KerimKochekov/MRL98](https://github.com/KerimKochekov/MRL98)
